@@ -107,6 +107,21 @@ export function Hero() {
             </Link>
           </Button>
         </motion.div>
+
+        {/* Homebrew Install (macOS only) */}
+        {platform === "macos" && (
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.7 }}
+            className="mt-8 flex flex-col items-center"
+          >
+            <p className="mb-2 text-sm text-muted-foreground">Or install via Homebrew:</p>
+            <div className="flex items-center gap-2 rounded-lg border border-primary/10 bg-muted/30 px-4 py-2.5 text-sm font-mono text-muted-foreground backdrop-blur-sm">
+              <code>brew tap novitaswebworks/tap && brew install novaterm</code>
+            </div>
+          </motion.div>
+        )}
       </motion.div>
     </section>
   )
