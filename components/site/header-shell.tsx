@@ -1,6 +1,6 @@
 "use client"
 
-import { GithubIcon, StarIcon } from "@hugeicons/core-free-icons"
+import { GithubIcon, StarIcon, Menu01Icon } from "@hugeicons/core-free-icons"
 import { HugeiconsIcon } from "@hugeicons/react"
 import { motion } from "motion/react"
 import Image from "next/image"
@@ -8,6 +8,7 @@ import Link from "next/link"
 import * as React from "react"
 
 import { Button } from "@/components/ui/button"
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { SITE } from "@/lib/site"
 import { cn } from "@/lib/utils"
 import { ThemeToggle } from "./theme-toggle"
@@ -27,6 +28,7 @@ interface HeaderShellProps {
 
 export function HeaderShell({ stars, rawStars }: HeaderShellProps) {
   const [scrolled, setScrolled] = React.useState(false)
+  const [isOpen, setIsOpen] = React.useState(false)
 
   React.useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12)
@@ -95,6 +97,7 @@ export function HeaderShell({ stars, rawStars }: HeaderShellProps) {
           ) : null}
         </div>
 
+        {/* Desktop Nav */}
         <nav className="hidden items-center gap-1 md:flex">
           {navLinks.map((l) => (
             <Link
@@ -117,12 +120,52 @@ export function HeaderShell({ stars, rawStars }: HeaderShellProps) {
 
         <div className="flex items-center gap-2">
           <ThemeToggle />
-          <Button asChild size="sm" className="rounded-full">
+          <Button asChild size="sm" className="hidden sm:inline-flex rounded-full">
             <Link href="#download">
               <HugeiconsIcon icon={GithubIcon} strokeWidth={2} />
               Download
             </Link>
           </Button>
+
+          {/* Mobile Nav Trigger */}
+          <Sheet open={isOpen} onOpenChange={setIsOpen}>
+            <SheetTrigger asChild>
+              <Button variant="ghost" size="icon" className="md:hidden">
+                <HugeiconsIcon icon={Menu01Icon} strokeWidth={2} />
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+              <nav className="flex flex-col gap-4 mt-8">
+                {navLinks.map((l) => (
+                  <Link
+                    key={l.href}
+                    href={l.href}
+                    onClick={() => setIsOpen(false)}
+                    className="text-lg font-medium text-foreground/80 transition-colors hover:text-foreground"
+                  >
+                    {l.label}
+                  </Link>
+                ))}
+                <Link
+                  href={SITE.github}
+                  target="_blank"
+                  rel="noreferrer"
+                  onClick={() => setIsOpen(false)}
+                  className="text-lg font-medium text-foreground/80 transition-colors hover:text-foreground"
+                >
+                  GitHub
+                </Link>
+                <div className="mt-4 border-t pt-4">
+                  <Button asChild className="w-full rounded-full">
+                    <Link href="#download" onClick={() => setIsOpen(false)}>
+                      <HugeiconsIcon icon={GithubIcon} strokeWidth={2} className="mr-2" />
+                      Download
+                    </Link>
+                  </Button>
+                </div>
+              </nav>
+            </SheetContent>
+          </Sheet>
         </div>
       </div>
     </header>
