@@ -23,23 +23,16 @@ export default function OG() {
       }}
     >
       <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
-        <div
+        <img
+          src={`${SITE.url}/novaterm_icon_256.png`}
+          width={56}
+          height={56}
+          alt="NovaTerm Logo"
           style={{
-            width: 56,
-            height: 56,
             borderRadius: 14,
-            background: "linear-gradient(135deg, #fff 0%, #94a3b8 100%)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            color: "#0a0a0a",
-            fontSize: 32,
-            fontWeight: 800,
-            letterSpacing: -1,
+            objectFit: "cover",
           }}
-        >
-          T
-        </div>
+        />
         <div style={{ fontSize: 36, fontWeight: 700, letterSpacing: -1 }}>
           {SITE.name}
         </div>
