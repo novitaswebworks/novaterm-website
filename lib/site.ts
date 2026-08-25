@@ -2,8 +2,8 @@ export const VERSION = "1.3.1"
 
 export const SITE = {
   name: "NovaTerm",
-  domain: "novaterm.app",
-  url: "https://novaterm.app",
+  domain: "novaterm.novitasweb.works",
+  url: "https://novaterm.novitasweb.works",
   tagline: "The AI-native developer workspace.",
   description:
     "NovaTerm is a beautifully crafted, GPU-accelerated terminal with a built-in code editor, local AI models via Ollama, and predictive ghost text.",
@@ -21,17 +21,17 @@ const releaseBase = `${SITE.githubReleases}/download/v${VERSION}`
 
 export const DOWNLOADS = {
   macSilicon: {
-    label: "macOS · Apple Silicon",
-    file: `NovaTerm_${VERSION}_aarch64.dmg`,
-    arch: "Apple Silicon (M1+)",
-    url: `${releaseBase}/NovaTerm_${VERSION}_aarch64.dmg`,
+    label: "macOS (Universal)",
+    file: `NovaTerm_${VERSION}_universal.dmg`,
+    arch: "Apple Silicon & Intel",
+    url: `${releaseBase}/NovaTerm_${VERSION}_universal.dmg`,
     available: true,
   },
   macIntel: {
-    label: "macOS · Intel",
-    file: `NovaTerm_${VERSION}_x64.dmg`,
-    arch: "Intel (x86_64)",
-    url: `${releaseBase}/NovaTerm_${VERSION}_x64.dmg`,
+    label: "macOS (Universal)",
+    file: `NovaTerm_${VERSION}_universal.dmg`,
+    arch: "Apple Silicon & Intel",
+    url: `${releaseBase}/NovaTerm_${VERSION}_universal.dmg`,
     available: true,
   },
   linuxAppImage: {
