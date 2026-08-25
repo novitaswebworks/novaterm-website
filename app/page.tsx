@@ -2,31 +2,12 @@ import { Demo } from "@/components/site/demo"
 import { Download } from "@/components/site/download"
 import { FAQ } from "@/components/site/faq"
 import { FeatureGrid } from "@/components/site/feature-grid"
-import { FeatureShowcase } from "@/components/site/feature-showcase"
 import { SiteFooter } from "@/components/site/footer"
 import { SiteHeader } from "@/components/site/header"
 import { Hero } from "@/components/site/hero"
 import { Stats } from "@/components/site/stats"
 import { DOWNLOADS, SITE, VERSION } from "@/lib/site"
-
-import {
-  BrowserIcon,
-  CheckListIcon,
-  CodeFolderIcon,
-  CodeIcon,
-  CommandIcon,
-  CommandLineIcon,
-  CpuIcon,
-  EnergyIcon,
-  GitBranchIcon,
-  Image01Icon,
-  Layout02Icon,
-  Mic01Icon,
-  Notebook01Icon,
-  PaintBrush02Icon,
-  RecordIcon,
-  Search01Icon,
-} from "@hugeicons/core-free-icons"
+import Image from "next/image"
 
 export default function HomePage() {
   const jsonLd = {
@@ -59,98 +40,50 @@ export default function HomePage() {
       <main className="relative">
         <Hero />
         <Stats />
+        
+        <section className="mx-auto max-w-6xl px-6 py-24 sm:py-32">
+          <div className="mb-16 flex flex-col items-center text-center">
+            <h2 className="text-3xl font-medium tracking-tight text-foreground sm:text-5xl">
+              A workspace you actually want to live in
+            </h2>
+            <p className="mt-6 max-w-2xl text-lg text-muted-foreground">
+              Hardware-accelerated terminal, code editor, and AI composer running side by side. Rendered natively using Tauri v2.
+            </p>
+          </div>
+          <div className="relative mx-auto max-w-5xl overflow-hidden rounded-2xl border bg-background/50 shadow-2xl">
+            <Image src="/terminal.webp" alt="NovaTerm Interface" width={1920} height={1080} className="w-full object-cover" />
+          </div>
+        </section>
+
+        <section className="mx-auto max-w-6xl px-6 py-24 sm:py-32">
+          <div className="mb-16 flex flex-col items-center text-center">
+            <h2 className="text-3xl font-medium tracking-tight text-foreground sm:text-5xl">
+              Source control, natively integrated
+            </h2>
+            <p className="mt-6 max-w-2xl text-lg text-muted-foreground">
+              Say goodbye to juggling the command line for basic git operations. Stage, commit, and let AI generate pull requests effortlessly.
+            </p>
+          </div>
+          <div className="relative mx-auto max-w-5xl overflow-hidden rounded-2xl border bg-background/50 shadow-2xl">
+            <Image src="/source-control.webp" alt="Source Control Panel" width={1920} height={1080} className="w-full object-cover" />
+          </div>
+        </section>
+
+        <section className="mx-auto max-w-6xl px-6 py-24 sm:py-32">
+          <div className="mb-16 flex flex-col items-center text-center">
+            <h2 className="text-3xl font-medium tracking-tight text-foreground sm:text-5xl">
+              Tutor Mode
+            </h2>
+            <p className="mt-6 max-w-2xl text-lg text-muted-foreground">
+              Hit Cmd+Shift+L when a command fails, and your local AI instantly reads the PTY output to explain exactly what went wrong.
+            </p>
+          </div>
+          <div className="relative mx-auto max-w-5xl overflow-hidden rounded-2xl border bg-background/50 shadow-2xl">
+            <Image src="/ai_workflow.webp" alt="AI Workflow" width={1920} height={1080} className="w-full object-cover" />
+          </div>
+        </section>
+
         <Demo />
-
-        <div id="features" className="relative">
-          <FeatureShowcase
-            id="terminal"
-            index="01"
-            eyebrow="Terminal"
-            title="A terminal you'll actually want to live in."
-            description="Built with Tauri v2 and React. Hardware accelerated rendering. Glassmorphic transparency that beautifully blends with your OS."
-            bullets={[
-              {
-                icon: CommandLineIcon,
-                label: "WebGL-rendered xterm.js - silky at any scrollback",
-              },
-              {
-                icon: Layout02Icon,
-                label: "Native OS glassmorphism & background blur",
-              },
-              {
-                icon: CodeFolderIcon,
-                label: "File explorer with Catppuccin icons",
-              },
-              {
-                icon: EnergyIcon,
-                label: "Sub-millisecond keystroke latency",
-              },
-            ]}
-            image={{
-              src: "/novaterm-hero.jpg",
-              alt: "NovaTerm terminal showing transparent glassmorphism and the file explorer",
-              width: 1920,
-              height: 1080,
-              caption: "~/projects/novaterm",
-            }}
-            priority
-          />
-
-          <FeatureShowcase
-            id="editor"
-            index="02"
-            eyebrow="Editor"
-            title="An editor with real Vim mode and AI autocomplete."
-            description="Built-in CodeMirror editor with context-aware completions, local AI endpoints via Ollama, and first-class Vim motions."
-            bullets={[
-              { icon: CodeIcon, label: "Context-aware AI autocomplete" },
-              {
-                icon: CommandIcon,
-                label: "Real Vim mode (motions, registers, marks)",
-              },
-              {
-                icon: PaintBrush02Icon,
-                label: "Beautiful syntax highlighting and themes",
-              },
-            ]}
-            image={{
-              src: "/novaterm-hero.jpg",
-              alt: "NovaTerm code editor with AI autocomplete and Vim mode",
-              width: 1920,
-              height: 1080,
-              caption: "src/main.rs",
-            }}
-            reverse
-          />
-
-
-          <FeatureShowcase
-            id="agents"
-            index="03"
-            eyebrow="AI workflow"
-            title="Ghost text and local models."
-            description="Run everything locally using Ollama and LMStudio. Completely private, no data leaves your machine."
-            bullets={[
-              {
-                icon: CodeIcon,
-                label: "AI predictive ghost text inline while you type",
-              },
-              { icon: CpuIcon, label: "100% Local models via Ollama" },
-              {
-                icon: RecordIcon,
-                label: "No telemetry, no tracking, completely private",
-              },
-            ]}
-            image={{
-              src: "/novaterm-hero.jpg",
-              alt: "NovaTerm AI features",
-              width: 1920,
-              height: 1080,
-              caption: "AI · Local Models",
-            }}
-          />
-        </div>
-
         <FeatureGrid />
         <Download />
         <FAQ />

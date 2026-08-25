@@ -103,11 +103,11 @@ export function FeatureGrid() {
   return (
     <Section id="more">
       <div className="mx-auto max-w-3xl">
-        <SectionEyebrow>05 - Toolkit</SectionEyebrow>
+        <SectionEyebrow>Toolkit</SectionEyebrow>
         <SectionHeading>More built in. No plugins required.</SectionHeading>
       </div>
 
-      <div className="mt-14 grid grid-cols-1 gap-px overflow-hidden rounded-3xl border border-primary/20 bg-primary/10 sm:grid-cols-2 lg:grid-cols-3 shadow-[0_0_30px_color-mix(in_srgb,var(--primary)_10%,transparent)]">
+      <div className="mt-14 grid grid-cols-1 gap-px overflow-hidden rounded-3xl border border-primary/20 bg-primary/10 sm:grid-cols-2 lg:grid-cols-4 shadow-[0_0_30px_color-mix(in_srgb,var(--primary)_10%,transparent)]">
         {items.map((it) => (
           <div
             key={it.title}
