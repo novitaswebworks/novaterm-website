@@ -16,12 +16,21 @@
 ---
 
 <p align="center">
-  <img src="novaterm-website-demo.png" alt="NovaTerm website" width="820" />
+  <img src="public/novaterm-hero.jpg" alt="NovaTerm website" width="820" />
 </p>
 
 The source for [novaterm.novitasweb.works](https://novaterm.novitasweb.works), the landing page for **NovaTerm**, a lightweight terminal-first AI-native dev workspace. Open-sourced because people kept asking how the animated background and the overall design were built, so here it is, end to end.
 
 The product itself lives in a separate repo: **[novitaswebworks/novaterm](https://github.com/novitaswebworks/novaterm)**.
+
+## 🚀 Download NovaTerm
+
+If you're just looking to download the app (macOS):
+```bash
+brew tap novitaswebworks/tap
+brew install novaterm
+```
+*(For Windows and Linux, download from the [releases page](https://github.com/novitaswebworks/novaterm/releases))*
 
 ## The animated background
 
