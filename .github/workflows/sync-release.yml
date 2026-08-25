@@ -1,0 +1,71 @@
+name: Sync Release from App
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Triggered by the desktop app repo sending a repository_dispatch event
+# with event_type = "app-released".
+# Payload:
+#   client_payload.version  → "1.3.0"
+#   client_payload.notes    → raw GitHub release body markdown
+# ─────────────────────────────────────────────────────────────────────────────
+on:
+  repository_dispatch:
+    types: [app-released]
+
+  # Also allow manual trigger for testing
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Version to sync (e.g. 1.3.0)"
+        required: true
+      notes:
+        description: "Release notes (markdown)"
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout website
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Resolve version and notes
+        id: vars
+        run: |
+          if [ "${{ github.event_name }}" = "repository_dispatch" ]; then
+            echo "VERSION=${{ github.event.client_payload.version }}" >> "$GITHUB_OUTPUT"
+            # Multi-line notes need to go through an env file
+            {
+              echo "NOTES<<EOF"
+              echo "${{ github.event.client_payload.notes }}"
+              echo "EOF"
+            } >> "$GITHUB_ENV"
+          else
+            echo "VERSION=${{ inputs.version }}" >> "$GITHUB_OUTPUT"
+            {
+              echo "NOTES<<EOF"
+              echo "${{ inputs.notes }}"
+              echo "EOF"
+            } >> "$GITHUB_ENV"
+          fi
+
+      - name: Run update script
+        run: node scripts/update-release.mjs "${{ steps.vars.outputs.VERSION }}" "$NOTES"
+
+      - name: Commit and push
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add lib/site.ts lib/changelog.ts
+          git diff --staged --quiet || git commit -m "chore: sync release v${{ steps.vars.outputs.VERSION }}"
+          git push
