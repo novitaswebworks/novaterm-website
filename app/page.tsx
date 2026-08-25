@@ -1,4 +1,4 @@
-import { Demo } from "@/components/site/demo"
+
 import { Download } from "@/components/site/download"
 import { FAQ } from "@/components/site/faq"
 import { FeatureGrid } from "@/components/site/feature-grid"
@@ -76,7 +76,7 @@ export default function HomePage() {
           </Reveal>
         </section>
 
-        <Demo />
+
         <Reveal>
           <FeatureGrid />
         </Reveal>
