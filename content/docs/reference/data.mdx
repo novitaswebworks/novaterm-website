@@ -1,0 +1,53 @@
+---
+title: Data locations
+description: Where NovaTerm stores settings, sessions, themes, snippets, and keys on each platform.
+icon: Config
+---
+
+NovaTerm stores its state in one app data directory plus the OS keychain. The settings UI is the source of truth - hand-editing these files is supported but not the workflow.
+
+## App data directory
+
+| Platform | Path |
+| --- | --- |
+| macOS | `~/Library/Application Support/com.novaterm.app/` |
+| Linux | `~/.local/share/com.novaterm.app/` |
+| Windows | `%APPDATA%\com.novaterm.app\` |
+
+The bundle id is `com.novaterm.app`. Resolved by the Rust `dirs` crate, never by raw `$HOME` / `%APPDATA%` reads.
+
+## Files
+
+| File | Contents |
+| --- | --- |
+| `novaterm-settings.json` | App preferences - themes, fonts, shortcuts, autocomplete, agent toggles, WSL distro, etc. |
+| `novaterm-ai-sessions.json` | Chat session list, active id, and per-session message histories |
+| `novaterm-ai-agents.json` | Custom agents - system prompts and tool subsets |
+| `novaterm-ai-snippets.json` | Composer `#handle` snippets |
+| `novaterm-ai-todos.json` | In-app TODO lists the agent can read and write |
+| `novaterm-custom-themes.json` | User-built themes |
+| `themes/` | Background images and any per-theme assets |
+
+All seven are managed through `tauri-plugin-store`. Atomic writes, schema migrations on launch.
+
+You can back up or sync this directory across machines if you want. Just close NovaTerm first.
+
+## Keychain
+
+API keys never live in the files above. They go to the OS keychain:
+
+- **macOS** - Keychain, service `novaterm-ai`
+- **Windows** - Credential Manager, target `novaterm-ai`
+- **Linux** - Secret Service (libsecret) where available; file-based fallback gated behind `#[cfg(target_os = "linux")]` for headless environments
+
+Wipe all keys at once by deleting the `novaterm-ai` service entries in your OS keychain. The settings file is unaffected.
+
+## Cache
+
+NovaTerm does not maintain a separate disk cache today. Webview cache is managed by Tauri's WebView2 (Windows) / WKWebView (macOS) / webkit2gtk (Linux) and lives in the platform-default location for those engines.
+
+## Editing files directly
+
+You can edit any file in the app data directory while NovaTerm is closed. On next launch the store will validate, migrate if needed, and surface errors in the About tab.
+
+The settings UI is still the right way to change preferences - it knows the schema, validates inputs, and triggers the right re-renders (theme swaps, font changes, shortcut rebinds). Editing JSON by hand is for backups and bulk migrations, not daily use.
