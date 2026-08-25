@@ -8,7 +8,7 @@ import Link from "next/link"
 import * as React from "react"
 
 import { Button } from "@/components/ui/button"
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle } from "@/components/ui/sheet"
 import { SITE } from "@/lib/site"
 import { cn } from "@/lib/utils"
 import { ThemeToggle } from "./theme-toggle"
@@ -130,18 +130,34 @@ export function HeaderShell({ stars, rawStars }: HeaderShellProps) {
           {/* Mobile Nav Trigger */}
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="md:hidden">
+              <Button variant="ghost" size="icon" className="md:hidden ml-1 h-9 w-9">
                 <HugeiconsIcon icon={Menu01Icon} strokeWidth={2} />
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-[300px] sm:w-[400px]">
-              <nav className="flex flex-col gap-4 mt-8">
+            <SheetContent 
+              side="right" 
+              className="w-full sm:w-[400px] bg-background/80 backdrop-blur-2xl border-l border-white/10 dark:bg-zinc-950/80 p-6 flex flex-col"
+            >
+              <SheetHeader className="p-0 mb-8 text-left">
+                <SheetTitle className="flex items-center gap-2.5">
+                  <Image
+                    src="/novaterm_icon_256.png"
+                    alt=""
+                    width={28}
+                    height={28}
+                    className="rounded-md"
+                  />
+                  <span>{SITE.name}</span>
+                </SheetTitle>
+              </SheetHeader>
+              
+              <nav className="flex flex-col gap-2 flex-1">
                 {navLinks.map((l) => (
                   <Link
                     key={l.href}
                     href={l.href}
                     onClick={() => setIsOpen(false)}
-                    className="text-lg font-medium text-foreground/80 transition-colors hover:text-foreground"
+                    className="flex items-center px-4 py-3 text-lg font-medium rounded-xl text-foreground/80 hover:text-foreground hover:bg-primary/10 transition-colors"
                   >
                     {l.label}
                   </Link>
@@ -151,19 +167,20 @@ export function HeaderShell({ stars, rawStars }: HeaderShellProps) {
                   target="_blank"
                   rel="noreferrer"
                   onClick={() => setIsOpen(false)}
-                  className="text-lg font-medium text-foreground/80 transition-colors hover:text-foreground"
+                  className="flex items-center px-4 py-3 text-lg font-medium rounded-xl text-foreground/80 hover:text-foreground hover:bg-primary/10 transition-colors"
                 >
                   GitHub
                 </Link>
-                <div className="mt-4 border-t pt-4">
-                  <Button asChild className="w-full rounded-full">
-                    <Link href="#download" onClick={() => setIsOpen(false)}>
-                      <HugeiconsIcon icon={GithubIcon} strokeWidth={2} className="mr-2" />
-                      Download
-                    </Link>
-                  </Button>
-                </div>
               </nav>
+              
+              <div className="mt-auto border-t border-border/50 pt-6 pb-4">
+                <Button asChild size="lg" className="w-full rounded-full shadow-[0_0_20px_color-mix(in_srgb,var(--primary)_20%,transparent)]">
+                  <Link href="#download" onClick={() => setIsOpen(false)}>
+                    <HugeiconsIcon icon={GithubIcon} strokeWidth={2} className="mr-2" />
+                    Download Now
+                  </Link>
+                </Button>
+              </div>
             </SheetContent>
           </Sheet>
         </div>
