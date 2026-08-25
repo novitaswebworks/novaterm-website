@@ -2,7 +2,7 @@
   <img src="public/novaterm_icon_256.png" width="120" height="120" alt="NovaTerm" />
   <h1>NovaTerm Website</h1>
 
-  <p><strong>The website and landing page for <a href="https://github.com/lordbobby-dot/novaterm">NovaTerm</a>.</strong></p>
+  <p><strong>The website and landing page for <a href="https://github.com/novitaswebworks/novaterm">NovaTerm</a>.</strong></p>
 
   <p>
     <img src="https://img.shields.io/badge/license-Apache--2.0-green" alt="license" />
@@ -10,7 +10,7 @@
     <img src="https://img.shields.io/badge/React-19-149eca" alt="react" />
   </p>
 
-  <p><a href="https://novaterm.app">novaterm.app</a></p>
+  <p><a href="https://novaterm.novitasweb.works">novaterm.novitasweb.works</a></p>
 </div>
 
 ---
@@ -19,9 +19,9 @@
   <img src="novaterm-website-demo.png" alt="NovaTerm website" width="820" />
 </p>
 
-The source for [novaterm.app](https://novaterm.app), the landing page for **NovaTerm**, a lightweight terminal-first AI-native dev workspace. Open-sourced because people kept asking how the animated background and the overall design were built, so here it is, end to end.
+The source for [novaterm.novitasweb.works](https://novaterm.novitasweb.works), the landing page for **NovaTerm**, a lightweight terminal-first AI-native dev workspace. Open-sourced because people kept asking how the animated background and the overall design were built, so here it is, end to end.
 
-The product itself lives in a separate repo: **[lordbobby-dot/novaterm](https://github.com/lordbobby-dot/novaterm)**.
+The product itself lives in a separate repo: **[novitaswebworks/novaterm](https://github.com/novitaswebworks/novaterm)**.
 
 ## The animated background
 
