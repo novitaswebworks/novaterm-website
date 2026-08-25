@@ -1,3 +1,4 @@
+"use client"
 import { AppleIcon, ComputerIcon, GithubIcon, MicrosoftIcon } from "@hugeicons/core-free-icons"
 import { HugeiconsIcon } from "@hugeicons/react"
 import Link from "next/link"
