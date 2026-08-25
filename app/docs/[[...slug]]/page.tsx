@@ -19,7 +19,7 @@ export default async function Page(props: {
 
   const filePath =
     page.absolutePath || path.join(process.cwd(), "content/docs", page.path)
-  const rawMarkdown = fs.readFileSync(filePath, "utf-8")
+  const rawMarkdown = fs.readFileSync(/*turbopackIgnore: true*/ filePath, "utf-8")
 
   const slugs = params.slug ?? []
   const slugPath = slugs.join("/")
