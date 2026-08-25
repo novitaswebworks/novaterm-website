@@ -9,6 +9,19 @@ export interface ChangelogEntry {
 
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    version: "1.3.1",
+    date: "2026-08-25",
+    highlight: "See the assets to download this version and install.",
+    groups: [
+      {
+        kind: "Changed",
+        items: [
+          "See the assets to download this version and install.",
+        ],
+      },
+    ],
+  },
+  {
     version: "1.2.0",
     date: "2026-08-25",
     highlight: "Enterprise Vaults, AI PRs, and macOS Native Vibrancy.",
