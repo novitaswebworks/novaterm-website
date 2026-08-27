@@ -66,7 +66,7 @@ export default function AboutPage() {
             GitHub
           </Link>
           . For anything else you can reach me at{" "}
-          <Link href="mailto:info@novaterm.app">info@novaterm.app</Link>.
+          <Link href="mailto:hello@novitasweb.works">hello@novitasweb.works</Link>.
         </p>
 
         <h2>How it&apos;s built</h2>
@@ -140,9 +140,9 @@ export default function AboutPage() {
             </Link>
           </Button>
           <Button asChild variant="ghost" size="sm" className="rounded-full">
-            <Link href="mailto:info@novaterm.app">
+            <Link href="mailto:hello@novitasweb.works">
               <HugeiconsIcon icon={Mail01Icon} strokeWidth={2} />
-              info@novaterm.app
+              hello@novitasweb.works
             </Link>
           </Button>
         </div>

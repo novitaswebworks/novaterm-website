@@ -98,8 +98,8 @@ export default function PrivacyPage() {
           </li>
           <li>
             <strong>Email</strong>, if you write to{" "}
-            <Link href="mailto:info@novaterm.app">info@novaterm.app</Link> or{" "}
-            <Link href="mailto:security@novaterm.app">security@novaterm.app</Link>.
+            <Link href="mailto:hello@novitasweb.works">hello@novitasweb.works</Link> or{" "}
+            <Link href="mailto:hello@novitasweb.works">hello@novitasweb.works</Link>.
           </li>
         </ul>
         <p>
@@ -125,8 +125,8 @@ export default function PrivacyPage() {
         <h2>Contact</h2>
         <p>
           Privacy questions:{" "}
-          <Link href="mailto:info@novaterm.app">info@novaterm.app</Link>. Security:{" "}
-          <Link href="mailto:security@novaterm.app">security@novaterm.app</Link>.
+          <Link href="mailto:hello@novitasweb.works">hello@novitasweb.works</Link>. Security:{" "}
+          <Link href="mailto:hello@novitasweb.works">hello@novitasweb.works</Link>.
           Source:{" "}
           <Link href={SITE.github} target="_blank" rel="noreferrer">
             {SITE.github.replace("https://", "")}

@@ -123,9 +123,9 @@ export default function TermsPage() {
         <h2>9. Contact</h2>
         <p>
           Questions? Email{" "}
-          <Link href="mailto:info@novaterm.app">info@novaterm.app</Link>. Security
+          <Link href="mailto:hello@novitasweb.works">hello@novitasweb.works</Link>. Security
           issues go to{" "}
-          <Link href="mailto:security@novaterm.app">security@novaterm.app</Link>.
+          <Link href="mailto:hello@novitasweb.works">hello@novitasweb.works</Link>.
         </p>
       </Prose>
 
