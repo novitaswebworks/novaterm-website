@@ -9,6 +9,19 @@ export interface ChangelogEntry {
 
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    version: "1.3.6",
+    date: "2026-08-27",
+    highlight: "Updates",
+    groups: [
+      {
+        kind: "Changed",
+        items: [
+          "Updates",
+        ],
+      },
+    ],
+  },
+  {
     version: "1.3.4",
     date: "2026-08-26",
     highlight: "Bugfixes and Winget integration",
