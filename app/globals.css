@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&display=swap");
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
@@ -104,7 +105,7 @@
 
 .dark {
     --background: oklch(0.12 0.04 250);
-    --foreground: oklch(0.985 0.002 240);
+    --foreground: #ffffff;
     --card: oklch(0.15 0.04 250);
     --card-foreground: oklch(0.985 0.002 240);
     --popover: oklch(0.15 0.04 250);
@@ -185,3 +186,132 @@
     mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
   }
 }
+/* Vesper.ai specific styles ported for NovaTerm */
+.vesper-nav-link {
+  height: 40px;
+  padding: 0 18px;
+  border-radius: 7px;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid rgba(198,198,198,0.55);
+  background: linear-gradient(105deg, #050505 0%, #2a2a2a 48%, #4a4a4a 100%);
+  color: #f3f3f3;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.vesper-nav-link::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, transparent 30%, rgba(255,255,255,0.16) 50%, transparent 70%);
+  transform: translateX(-120%);
+  transition: transform 0.6s ease;
+}
+
+.vesper-nav-link:hover::before { transform: translateX(120%); }
+.vesper-nav-link:hover {
+  border-color: rgba(235,235,235,0.9);
+  background: linear-gradient(105deg, #111 0%, #3a3a3a 45%, #6a6a6a 100%);
+  box-shadow: 0 0 18px rgba(200,210,230,0.18);
+  color: white;
+}
+
+.vesper-btn-solid {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  padding: 0 16px;
+  border-radius: 6px;
+  font-size: 13.5px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all 0.35s ease;
+  background: linear-gradient(180deg, #ffffff 0%, #e7e7e7 48%, #cfcfcf 100%);
+  color: #111;
+  border: 1px solid #fff;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.95);
+}
+
+.vesper-btn-solid::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, transparent 20%, rgba(255,255,255,0.45) 48%, transparent 76%);
+  transform: translateX(-130%);
+  transition: transform 0.65s ease;
+}
+
+.vesper-btn-solid:hover::after { transform: translateX(130%); }
+
+.vesper-btn-solid:hover {
+  background: linear-gradient(180deg, #f3f6ff 42%, #d5def2 100%);
+  border-color: #f2f6ff;
+  box-shadow: inset 0 1px 0 #fff, 0 0 22px rgba(186,208,255,0.35), 0 8px 18px rgba(255,255,255,0.12);
+  color: #111;
+}
+
+.vesper-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 15px;
+  border: 0;
+  border-radius: 5px;
+  background: linear-gradient(90deg, #7d7d7d 0%, #2a2a2a 52%, #0a0a0a 100%);
+  color: #f2f2f2;
+  font-size: 12.5px;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+.vesper-btn-ghost {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  padding: 0 16px;
+  border-radius: 6px;
+  font-size: 13.5px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all 0.35s ease;
+  background: linear-gradient(135deg, rgba(255,255,255,0.12), rgba(0,0,0,0.5) 46%, rgba(150,170,200,0.1));
+  border: 1px solid rgba(198,198,198,0.55);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  color: white;
+}
+.vesper-btn-ghost:hover {
+  box-shadow: 0 0 24px rgba(170,200,255,0.28);
+  border-color: rgba(220,230,255,0.8);
+}
+.vesper-btn-ghost::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, transparent 20%, rgba(255,255,255,0.45) 48%, transparent 76%);
+  transform: translateX(-130%);
+  transition: transform 0.65s ease;
+}
+.vesper-btn-ghost:hover::after { transform: translateX(130%); }
+

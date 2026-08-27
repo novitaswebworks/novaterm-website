@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next"
-import { Geist_Mono, Inter } from "next/font/google"
+import { Space_Grotesk, Geist_Mono } from "next/font/google"
 
 import { BackgroundWaves } from "@/components/site/background-waves"
 import { ThemeProvider } from "@/components/theme-provider"
@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils"
 import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-sans" })
+const fontSans = Space_Grotesk({ subsets: ["latin"], variable: "--font-sans" })
 
 const fontMono = Geist_Mono({
   subsets: ["latin"],
@@ -87,7 +87,7 @@ export default function RootLayout({
         "antialiased",
         fontMono.variable,
         "font-sans",
-        inter.variable
+        fontSans.variable
       )}
     >
       <body>

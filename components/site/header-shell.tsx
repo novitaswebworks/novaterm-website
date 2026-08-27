@@ -46,10 +46,7 @@ export function HeaderShell({ stars, rawStars }: HeaderShellProps) {
     >
       <div
         className={cn(
-          "mx-3 flex max-w-6xl items-center justify-between gap-4 px-4 sm:mx-auto sm:px-6",
-          "rounded-full transition-all duration-300",
-          scrolled &&
-            "border border-white/10 bg-white/70 px-4 py-2 shadow-lg shadow-black/[0.04] backdrop-blur-xl dark:border-white/[0.08] dark:bg-zinc-950/60 dark:shadow-black/40"
+          "mx-3 flex max-w-6xl items-center justify-between gap-4 px-4 sm:mx-auto sm:px-6 transition-all duration-300"
         )}
       >
         <div className="flex items-center gap-2.5">
@@ -98,12 +95,12 @@ export function HeaderShell({ stars, rawStars }: HeaderShellProps) {
         </div>
 
         {/* Desktop Nav */}
-        <nav className="hidden items-center gap-1 md:flex">
+        <nav className="hidden items-center gap-1 md:flex rounded-full border border-white/10 bg-black/20 px-2 py-1.5 shadow-lg shadow-black/40 backdrop-blur-xl dark:border-white/[0.08] dark:bg-white/5">
           {navLinks.map((l) => (
             <Link
               key={l.href}
               href={l.href}
-              className="rounded-full px-3 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+              className="rounded-full px-4 py-2 text-sm font-medium text-foreground/70 transition-all hover:bg-white/10 hover:text-foreground dark:hover:bg-white/10"
             >
               {l.label}
             </Link>
@@ -112,7 +109,7 @@ export function HeaderShell({ stars, rawStars }: HeaderShellProps) {
             href={SITE.github}
             target="_blank"
             rel="noreferrer"
-            className="rounded-full px-3 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+            className="rounded-full px-4 py-2 text-sm font-medium text-foreground/70 transition-all hover:bg-white/10 hover:text-foreground dark:hover:bg-white/10"
           >
             GitHub
           </Link>
@@ -120,12 +117,10 @@ export function HeaderShell({ stars, rawStars }: HeaderShellProps) {
 
         <div className="flex items-center gap-2">
           <ThemeToggle />
-          <Button asChild size="sm" className="hidden sm:inline-flex rounded-full">
-            <Link href="#download">
-              <HugeiconsIcon icon={GithubIcon} strokeWidth={2} />
-              Download
-            </Link>
-          </Button>
+          <Link href="#download" className="vesper-btn-solid hidden sm:inline-flex rounded-full">
+            <HugeiconsIcon icon={GithubIcon} strokeWidth={2} className="mr-2" />
+            Download
+          </Link>
 
           {/* Mobile Nav Trigger */}
           <Sheet open={isOpen} onOpenChange={setIsOpen}>

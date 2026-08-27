@@ -51,11 +51,11 @@ export function Hero() {
             href={`${SITE.githubReleases}/tag/v${VERSION}`}
             target="_blank"
             rel="noreferrer"
-            className="group inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 font-mono text-[11px] tracking-widest text-primary uppercase backdrop-blur-md transition-all hover:bg-primary/10 hover:border-primary/40"
+            className="vesper-badge group hover:opacity-90 transition-opacity"
           >
             <span className="relative flex h-1.5 w-1.5">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75"></span>
-              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-primary"></span>
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-white opacity-75"></span>
+              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-white"></span>
             </span>
             <span>NovaTerm v{VERSION}</span>
             <HugeiconsIcon icon={ArrowRight01Icon} className="size-3 transition-transform group-hover:translate-x-0.5" strokeWidth={2} />
@@ -71,7 +71,7 @@ export function Hero() {
             style={{ perspective: "1000px" }}
             className="text-[3.5rem] font-medium leading-[1.05] tracking-tight text-foreground sm:text-7xl md:text-[5.5rem]"
           >
-            A workspace you actually <br className="hidden sm:block" /> want to live in.
+            A workspace you actually <br className="hidden sm:block" /> <em className="italic text-muted-foreground font-serif">want to live in.</em>
           </motion.h1>
         </div>
 
@@ -94,18 +94,14 @@ export function Hero() {
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.5 }}
           className="mt-10 flex flex-col items-center gap-4 sm:flex-row"
         >
-          <Button asChild size="lg" className="h-12 rounded-full px-8 font-medium shadow-[0_0_40px_color-mix(in_srgb,var(--primary)_30%,transparent)] transition-all hover:scale-[1.02] hover:shadow-[0_0_60px_color-mix(in_srgb,var(--primary)_40%,transparent)]">
-            <Link href={primary.href} target="_blank" rel="noreferrer">
-              <HugeiconsIcon icon={primary.icon} strokeWidth={1.5} className="mr-2 size-5" />
-              {primary.label}
-            </Link>
-          </Button>
-          <Button asChild size="lg" variant="ghost" className="h-12 rounded-full px-8 font-medium text-muted-foreground hover:bg-muted/50 hover:text-foreground transition-colors">
-            <Link href={SITE.github} target="_blank" rel="noreferrer">
-              <HugeiconsIcon icon={GithubIcon} strokeWidth={1.5} className="mr-2 size-5" />
-              View source
-            </Link>
-          </Button>
+          <Link href={primary.href} target="_blank" rel="noreferrer" className="vesper-btn-solid" style={{height: "42px"}}>
+            <HugeiconsIcon icon={primary.icon} strokeWidth={1.5} className="mr-2 size-5" />
+            {primary.label}
+          </Link>
+          <Link href={SITE.github} target="_blank" rel="noreferrer" className="vesper-btn-ghost" style={{height: "42px"}}>
+            <HugeiconsIcon icon={GithubIcon} strokeWidth={1.5} className="mr-2 size-5" />
+            View source
+          </Link>
         </motion.div>
 
         {/* Homebrew Install (macOS only) */}
