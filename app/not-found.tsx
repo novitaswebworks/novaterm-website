@@ -1,64 +1,110 @@
 "use client"
-import React, { useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { motion } from 'motion/react';
+import { motion, useMotionValue, useTransform, useSpring } from 'motion/react';
 
 export default function NotFound() {
-  const constraintsRef = useRef<HTMLDivElement>(null);
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  // Smooth out the mouse movement
+  const springConfig = { damping: 15, stiffness: 150 };
+  const smoothX = useSpring(mouseX, springConfig);
+  const smoothY = useSpring(mouseY, springConfig);
+
+  const [windowSize, setWindowSize] = useState({ w: 1000, h: 1000 });
+  
+  useEffect(() => {
+    setWindowSize({ w: window.innerWidth, h: window.innerHeight });
+    const handleResize = () => setWindowSize({ w: window.innerWidth, h: window.innerHeight });
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    const x = (e.clientX / windowSize.w) * 2 - 1; // -1 to 1
+    const y = (e.clientY / windowSize.h) * 2 - 1; // -1 to 1
+    mouseX.set(x);
+    mouseY.set(y);
+  };
+
+  const handleMouseLeave = () => {
+    mouseX.set(0);
+    mouseY.set(0);
+  };
+
+  // Glitch offsets mapped to mouse movement
+  const redX = useTransform(smoothX, [-1, 1], [-40, 40]);
+  const redY = useTransform(smoothY, [-1, 1], [-20, 20]);
+  
+  const blueX = useTransform(smoothX, [-1, 1], [40, -40]);
+  const blueY = useTransform(smoothY, [-1, 1], [25, -25]);
+  
+  const greenX = useTransform(smoothX, [-1, 1], [-20, 20]);
+  const greenY = useTransform(smoothY, [-1, 1], [30, -30]);
+
+  // Dynamic skew and scale for extra glitchiness at the edges
+  const skewX = useTransform(smoothX, [-1, 1], [-10, 10]);
+  const textScale = useTransform(smoothY, [-1, 1], [0.95, 1.05]);
 
   return (
-    <div className="relative flex min-h-[100svh] flex-col items-center justify-center p-6 bg-transparent overflow-hidden" ref={constraintsRef}>
-      
-      {/* Background massive 404 */}
-      <div className="absolute inset-0 z-0 flex items-center justify-center pointer-events-none opacity-10">
-        <h1 className="text-[30vw] font-bold font-mono tracking-tighter text-white blur-sm select-none">404</h1>
-      </div>
+    <div 
+      className="relative flex min-h-[100svh] flex-col items-center justify-center p-6 bg-transparent overflow-hidden"
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+    >
+      <div className="absolute inset-0 bg-black/50 backdrop-blur-[2px] z-0 pointer-events-none" />
 
-      <motion.div 
-        drag
-        dragConstraints={constraintsRef}
-        dragElastic={0.4}
-        dragTransition={{ bounceStiffness: 600, bounceDamping: 20 }}
-        whileDrag={{ scale: 1.05, cursor: "grabbing" }}
-        className="relative z-10 w-full max-w-md cursor-grab rounded-2xl border border-white/20 bg-black/40 shadow-[0_20px_60px_rgba(0,0,0,0.8)] backdrop-blur-3xl"
-      >
-        {/* macOS Window Header */}
-        <div className="flex items-center justify-center border-b border-white/10 bg-white/5 py-3 px-4 rounded-t-2xl">
-          <div className="absolute left-4 flex gap-2">
-            <div className="h-3 w-3 rounded-full bg-[#ff5f56] shadow-[inset_0_1px_4px_rgba(0,0,0,0.5)] border border-black/20" />
-            <div className="h-3 w-3 rounded-full bg-[#ffbd2e] shadow-[inset_0_1px_4px_rgba(0,0,0,0.5)] border border-black/20" />
-            <div className="h-3 w-3 rounded-full bg-[#27c93f] shadow-[inset_0_1px_4px_rgba(0,0,0,0.5)] border border-black/20" />
-          </div>
-          <span className="font-mono text-[11px] font-semibold text-white/60 tracking-wider">Error 404 — NovaTerm</span>
-        </div>
-
-        {/* Window Content */}
-        <div className="p-8 text-center font-sans">
-          <div className="mb-6 mx-auto flex h-20 w-20 items-center justify-center rounded-[1.25rem] bg-gradient-to-b from-white/20 to-white/5 shadow-[inset_0_1px_0_rgba(255,255,255,0.4)] border border-white/10">
-            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-white">
-              <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/>
-              <path d="M12 9v4"/>
-              <path d="M12 17h.01"/>
-            </svg>
-          </div>
-          <h2 className="mb-3 text-3xl font-semibold text-white tracking-tight">Page Not Found</h2>
-          <p className="mb-8 text-base text-white/60 leading-relaxed">
-            The path you specified does not exist. Feel free to drag this window out of the way.
-          </p>
+      <div className="relative z-10 w-full flex flex-col items-center justify-center pointer-events-none">
+        
+        <div className="relative flex items-center justify-center h-[300px] w-full max-w-2xl mb-8">
           
-          <div className="flex justify-center">
-            <Link
-              href="/"
-              className="inline-flex h-11 items-center justify-center rounded-xl bg-white px-8 text-sm font-semibold text-black shadow-[0_4px_14px_rgba(255,255,255,0.25)] transition-transform hover:scale-105 hover:bg-gray-100 active:scale-95"
-            >
-              Return Home
-            </Link>
-          </div>
+          {/* Base white text */}
+          <motion.h1 
+            style={{ skewX, scale: textScale }}
+            className="absolute text-[160px] sm:text-[240px] font-mono font-bold tracking-tighter text-white mix-blend-screen z-40"
+          >
+            404
+          </motion.h1>
+          
+          {/* Red Glitch Layer */}
+          <motion.h1 
+            style={{ x: redX, y: redY, skewX, scale: textScale }}
+            className="absolute text-[160px] sm:text-[240px] font-mono font-bold tracking-tighter text-[#ff0000] mix-blend-screen z-30 opacity-90 blur-[1px]"
+          >
+            404
+          </motion.h1>
+          
+          {/* Blue Glitch Layer */}
+          <motion.h1 
+            style={{ x: blueX, y: blueY, skewX, scale: textScale }}
+            className="absolute text-[160px] sm:text-[240px] font-mono font-bold tracking-tighter text-[#00ffff] mix-blend-screen z-20 opacity-90 blur-[1px]"
+          >
+            404
+          </motion.h1>
+
+          {/* Green Glitch Layer */}
+          <motion.h1 
+            style={{ x: greenX, y: greenY, skewX, scale: textScale }}
+            className="absolute text-[160px] sm:text-[240px] font-mono font-bold tracking-tighter text-[#00ff00] mix-blend-screen z-10 opacity-90 blur-[1px]"
+          >
+            404
+          </motion.h1>
         </div>
-      </motion.div>
-      
-      <div className="absolute bottom-12 z-0 text-white/40 text-sm font-sans tracking-wide animate-pulse pointer-events-none select-none">
-        Grab the window to drag it around
+
+        <div className="text-center font-sans z-50 pointer-events-auto">
+          <p className="mb-10 text-lg text-white/60 uppercase tracking-[0.3em] font-semibold">
+            System Synchronization Lost
+          </p>
+          <Link
+            href="/"
+            className="group relative inline-flex h-12 items-center justify-center overflow-hidden rounded-md border border-white/20 bg-black/50 px-10 text-sm font-semibold text-white transition-all hover:border-white/50 hover:shadow-[0_0_30px_rgba(255,255,255,0.2)]"
+          >
+            <span className="relative z-10 transition-colors group-hover:text-black">Reboot to Homepage</span>
+            <div className="absolute inset-0 z-0 h-full w-full bg-white transition-transform duration-300 ease-in-out translate-y-[101%] group-hover:translate-y-0" />
+          </Link>
+        </div>
+
       </div>
     </div>
   );
