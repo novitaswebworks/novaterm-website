@@ -52,12 +52,14 @@ export function FAQ() {
         <Accordion
           type="single"
           collapsible
-          className="rounded-3xl border border-primary/20 bg-primary/10 backdrop-blur-md px-6 py-2 shadow-[0_0_30px_color-mix(in_srgb,var(--primary)_10%,transparent)] divide-y divide-primary/10"
+          className="flex flex-col gap-4 rounded-none border-none bg-transparent"
         >
           {faqs.map((f, i) => (
-            <AccordionItem key={i} value={`item-${i}`} className="border-none group">
-              <AccordionTrigger className="text-foreground group-hover:text-primary transition-colors text-lg font-medium">{f.q}</AccordionTrigger>
-              <AccordionContent className="text-muted-foreground leading-relaxed text-base">
+            <AccordionItem key={i} value={`item-${i}`} className="rounded-2xl border border-white/10 bg-black/20 px-2 backdrop-blur-md transition-all hover:bg-black/40 data-[state=open]:bg-black/40 data-[state=open]:border-primary/30">
+              <AccordionTrigger className="text-foreground/90 hover:text-white transition-colors text-lg font-medium py-5 px-4 text-left">
+                {f.q}
+              </AccordionTrigger>
+              <AccordionContent className="text-muted-foreground/90 leading-relaxed text-base px-4 pb-6 pt-2">
                 {f.a}
               </AccordionContent>
             </AccordionItem>
