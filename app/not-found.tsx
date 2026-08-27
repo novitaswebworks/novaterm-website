@@ -123,16 +123,16 @@ export default function NotFound() {
       
       // Giant 404 Text in background
       ctx.font = '900 15vw monospace';
-      ctx.fillStyle = 'rgba(255,255,255,0.03)';
+      ctx.fillStyle = 'rgba(255,255,255,0.15)';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
       ctx.fillText('404', canvas.width / 2, canvas.height / 2);
       
       // Scores
       ctx.font = 'bold 60px monospace';
-      ctx.fillStyle = 'rgba(0, 255, 255, 0.4)';
+      ctx.fillStyle = 'rgba(0, 255, 255, 0.8)';
       ctx.fillText(player.score.toString(), canvas.width / 4, 100);
-      ctx.fillStyle = 'rgba(255, 0, 85, 0.4)';
+      ctx.fillStyle = 'rgba(255, 0, 85, 0.8)';
       ctx.fillText(ai.score.toString(), 3 * canvas.width / 4, 100);
 
       animationId = requestAnimationFrame(draw);
@@ -156,7 +156,7 @@ export default function NotFound() {
       
       {/* UI Overlay */}
       <div className="absolute bottom-12 z-10 flex flex-col items-center gap-6 pointer-events-auto">
-        <p className="font-mono text-white/60 text-sm tracking-[0.2em] uppercase font-semibold">
+        <p className="font-mono text-white text-sm tracking-[0.2em] uppercase font-bold drop-shadow-md">
           You are Player 1 (Cyan). Beat the AI to escape.
         </p>
         <Link
