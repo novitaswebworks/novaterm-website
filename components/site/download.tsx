@@ -76,13 +76,7 @@ const platforms: PlatformBlock[] = [
         url: DOWNLOADS.linuxRpm.url,
         available: true,
       },
-      {
-        arch: "AUR · Arch / Manjaro",
-        file: DOWNLOADS.linuxAur.file,
-        url: DOWNLOADS.linuxAur.url,
-        available: true,
-        command: "yay -S novaterm-bin",
-      },
+
     ],
   },
   {

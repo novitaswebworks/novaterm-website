@@ -11,7 +11,7 @@ export const SITE = {
   githubReleases: "https://github.com/novitaswebworks/novaterm/releases",
   issues: "https://github.com/novitaswebworks/novaterm/issues",
   websiteRepo: "https://github.com/novitaswebworks/novaterm-website",
-  aur: "https://aur.archlinux.org/packages/novaterm-bin",
+
   demoVideoId: "novatermdemo",
   demoVideoUrl: "https://youtu.be/novatermdemo",
   youtube: "https://www.youtube.com/@novitaswebworks",
@@ -55,13 +55,7 @@ export const DOWNLOADS = {
     url: `${releaseBase}/NovaTerm-${VERSION}-1.x86_64.rpm`,
     available: true,
   },
-  linuxAur: {
-    label: "Linux · AUR",
-    file: "novaterm-bin",
-    arch: "Arch Linux / Manjaro",
-    url: "https://aur.archlinux.org/packages/novaterm-bin",
-    available: true,
-  },
+
   windows: {
     label: "Windows",
     file: `NovaTerm_${VERSION}_x64-setup.exe`,
