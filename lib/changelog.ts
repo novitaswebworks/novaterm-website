@@ -10,6 +10,19 @@ export interface ChangelogEntry {
 export const CHANGELOG: ChangelogEntry[] = [
   {
     version: "1.4.0",
+    date: "2026-08-29",
+    highlight: "See the assets to download this version and install.",
+    groups: [
+      {
+        kind: "Changed",
+        items: [
+          "See the assets to download this version and install.",
+        ],
+      },
+    ],
+  },
+  {
+    version: "1.4.0",
     date: "2026-08-27",
     highlight: "See the assets to download this version and install.",
     groups: [
