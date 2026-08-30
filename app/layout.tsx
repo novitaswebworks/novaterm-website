@@ -6,6 +6,7 @@ import { ThemeProvider } from "@/components/theme-provider"
 import { SITE } from "@/lib/site"
 import { cn } from "@/lib/utils"
 import { Analytics } from "@vercel/analytics/next"
+import MouseEffects from "@/components/originkit/ui/clickeffects"
 import "./globals.css"
 
 const fontSans = Space_Grotesk({ subsets: ["latin"], variable: "--font-sans" })
@@ -94,6 +95,9 @@ export default function RootLayout({
         <ThemeProvider defaultTheme="dark">
           <BackgroundWaves />
           {children}
+          <div className="pointer-events-none fixed inset-0 z-50 text-primary">
+            <MouseEffects interactionMode="sniper" color="var(--primary)" showLabel={false} />
+          </div>
         </ThemeProvider>
         <Analytics />
       </body>
