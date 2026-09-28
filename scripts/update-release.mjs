@@ -88,12 +88,12 @@ function parseNotes(notes) {
   }
   flush()
 
-  // If nothing was parsed, treat the whole body as a single "Changed" item
+  // If nothing was parsed, treat lines as "Changed" items unless it's known boilerplate
   if (!groups.length && notes.trim()) {
     const items = notes
       .split("\n")
       .map((l) => l.replace(/^[-*]\s+/, "").trim())
-      .filter((l) => l && !l.startsWith("#"))
+      .filter((l) => l && !l.startsWith("#") && !/see the assets to download/i.test(l))
     if (items.length) groups.push({ kind: "Changed", items })
   }
 
@@ -101,16 +101,26 @@ function parseNotes(notes) {
 }
 
 const groups = parseNotes(rawNotes)
+const isBoilerplate = !groups.length
 
 // Highlight = first bullet of "Added" or first bullet overall
 const highlight =
   groups.find((g) => g.kind === "Added")?.items[0] ??
   groups[0]?.items[0] ??
-  `NovaTerm ${version} release.`
+  `NovaTerm v${version} release with stability and performance updates.`
+
+const finalGroups = groups.length
+  ? groups
+  : [
+      {
+        kind: "Changed",
+        items: ["Performance improvements, stability updates, and general maintenance."],
+      },
+    ]
 
 // ── 3. Serialize as TypeScript ────────────────────────────────────────────────
-function serializeGroups(groups) {
-  return groups
+function serializeGroups(targetGroups) {
+  return targetGroups
     .map((g) => {
       const items = g.items.map((i) => `          "${i.replace(/"/g, '\\"')}"`).join(",\n")
       return `      {\n        kind: "${g.kind}",\n        items: [\n${items},\n        ],\n      }`
@@ -123,20 +133,66 @@ const newEntry = `  {
     date: "${today}",
     highlight: "${highlight.replace(/"/g, '\\"')}",
     groups: [
-${serializeGroups(groups)},
+${serializeGroups(finalGroups)},
     ],
   },`
 
-// ── 4. Prepend to CHANGELOG array in lib/changelog.ts ────────────────────────
+// ── 4. Upsert into CHANGELOG array in lib/changelog.ts (Idempotent) ──────────
 const changelogPath = join(ROOT, "lib", "changelog.ts")
 let changelogContent = readFileSync(changelogPath, "utf8")
 
-// Insert right after "export const CHANGELOG: ChangelogEntry[] = ["
-changelogContent = changelogContent.replace(
-  /export const CHANGELOG: ChangelogEntry\[\] = \[/,
-  `export const CHANGELOG: ChangelogEntry[] = [\n${newEntry}`
-)
+function findEntryRange(content, ver) {
+  const marker = new RegExp(`version:\\s*["']${ver}["']`)
+  const match = marker.exec(content)
+  if (!match) return null
+  const start = content.lastIndexOf("{", match.index)
+  let depth = 0
+  let end = -1
+  for (let i = start; i < content.length; i++) {
+    if (content[i] === "{") depth++
+    else if (content[i] === "}") {
+      depth--
+      if (depth === 0) {
+        end = i
+        if (content[i + 1] === ",") end++
+        break
+      }
+    }
+  }
+  return { start, end }
+}
 
-writeFileSync(changelogPath, changelogContent)
-console.log(`✓ Prepended v${version} to lib/changelog.ts`)
-console.log("Done! All changes written. GitHub Actions will commit and push.")
+function removeAllEntriesForVersion(content, ver) {
+  let res = content
+  while (true) {
+    const range = findEntryRange(res, ver)
+    if (!range) break
+    let s = range.start
+    while (s > 0 && (res[s - 1] === " " || res[s - 1] === "\t")) s--
+    let e = range.end
+    while (res[e + 1] === " " || res[e + 1] === "\t") e++
+    if (res[e + 1] === "\n") e++
+    res = res.slice(0, s) + res.slice(e + 1)
+  }
+  return res
+}
+
+const existingRange = findEntryRange(changelogContent, version)
+
+if (existingRange && isBoilerplate) {
+  console.log(`ℹ v${version} already exists in lib/changelog.ts and incoming notes are generic/boilerplate. Preserving existing notes.`)
+} else {
+  // Remove any existing entries for this version to prevent duplicates
+  changelogContent = removeAllEntriesForVersion(changelogContent, version)
+
+  // Prepend clean entry to top of array
+  changelogContent = changelogContent.replace(
+    /export const CHANGELOG: ChangelogEntry\[\] = \[/,
+    `export const CHANGELOG: ChangelogEntry[] = [\n${newEntry}`
+  )
+
+  writeFileSync(changelogPath, changelogContent)
+  console.log(`✓ Updated v${version} in lib/changelog.ts without duplicates`)
+}
+
+console.log("Done! All changes processed.")

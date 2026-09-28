@@ -25,6 +25,13 @@ const kindStyles: Record<ChangeKind, string> = {
 }
 
 export default function ChangelogPage() {
+  const seenVersions = new Set<string>()
+  const entries = CHANGELOG.filter((entry) => {
+    if (seenVersions.has(entry.version)) return false
+    seenVersions.add(entry.version)
+    return true
+  })
+
   return (
     <PageShell>
       <PageHero
@@ -66,10 +73,10 @@ export default function ChangelogPage() {
       <section className="relative pb-28">
         <div className="mx-auto max-w-3xl px-4 sm:px-6">
           <ol className="relative space-y-10 border-l border-border/60 pl-8 sm:pl-10">
-            {CHANGELOG.map((entry, idx) => {
+            {entries.map((entry, idx) => {
               const isLatest = idx === 0
               return (
-                <li key={entry.version} className="relative">
+                <li key={`${entry.version}-${idx}`} className="relative">
                   <span
                     aria-hidden
                     className={cn(

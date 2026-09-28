@@ -10,39 +10,26 @@ export interface ChangelogEntry {
 export const CHANGELOG: ChangelogEntry[] = [
   {
     version: "1.4.0",
-    date: "2026-09-28",
-    highlight: "See the assets to download this version and install.",
-    groups: [
-      {
-        kind: "Changed",
-        items: [
-          "See the assets to download this version and install.",
-        ],
-      },
-    ],
-  },
-  {
-    version: "1.4.0",
     date: "2026-08-29",
-    highlight: "See the assets to download this version and install.",
+    highlight: "Windows Package Manager (Winget) integration, Chocolatey packaging, and release pipeline hardening.",
     groups: [
       {
-        kind: "Changed",
+        kind: "Added",
         items: [
-          "See the assets to download this version and install.",
+          "Winget integration: automated submission pipeline for Windows Package Manager (NovitasWebWorks.NovaTerm).",
+          "Chocolatey packaging: automated package build and push with moderation compliance for choco install.",
         ],
       },
-    ],
-  },
-  {
-    version: "1.4.0",
-    date: "2026-08-27",
-    highlight: "See the assets to download this version and install.",
-    groups: [
       {
         kind: "Changed",
         items: [
-          "See the assets to download this version and install.",
+          "Hardened release workflow with resilient, non-blocking multi-platform store deployments.",
+        ],
+      },
+      {
+        kind: "Fixed",
+        items: [
+          "Resolved Chocolatey packaging specification paths and Windows MSI installer targets.",
         ],
       },
     ],
@@ -50,12 +37,18 @@ export const CHANGELOG: ChangelogEntry[] = [
   {
     version: "1.3.6",
     date: "2026-08-27",
-    highlight: "Updates",
+    highlight: "Linux Snapcraft store publishing and packaging fixes.",
     groups: [
       {
         kind: "Changed",
         items: [
-          "Updates",
+          "Snapcraft deployment workflow upgraded to direct store upload for faster releases.",
+        ],
+      },
+      {
+        kind: "Fixed",
+        items: [
+          "Resolved packaging build steps and execution modes on Linux distributions.",
         ],
       },
     ],
@@ -63,12 +56,18 @@ export const CHANGELOG: ChangelogEntry[] = [
   {
     version: "1.3.4",
     date: "2026-08-26",
-    highlight: "Bugfixes and Winget integration",
+    highlight: "Automated Windows MSI publishing and release authorization.",
     groups: [
+      {
+        kind: "Added",
+        items: [
+          "Winget releaser automation for publishing Windows MSI installers.",
+        ],
+      },
       {
         kind: "Changed",
         items: [
-          "Bugfixes and Winget integration",
+          "Migrated release creation authorization to Personal Access Tokens for seamless multi-platform asset uploads.",
         ],
       },
     ],
@@ -76,12 +75,13 @@ export const CHANGELOG: ChangelogEntry[] = [
   {
     version: "1.3.2",
     date: "2026-08-25",
-    highlight: "See the assets to download this version and install.",
+    highlight: "Editor search/replace panel styling and link updates.",
     groups: [
       {
         kind: "Changed",
         items: [
-          "See the assets to download this version and install.",
+          "Restyled code editor search and replace panel for enhanced visual ergonomics.",
+          "Updated domain configuration and official project links.",
         ],
       },
     ],
@@ -89,12 +89,13 @@ export const CHANGELOG: ChangelogEntry[] = [
   {
     version: "1.3.1",
     date: "2026-08-25",
-    highlight: "See the assets to download this version and install.",
+    highlight: "In-app updater public key signing & Homebrew Tap integration.",
     groups: [
       {
-        kind: "Changed",
+        kind: "Added",
         items: [
-          "See the assets to download this version and install.",
+          "In-app updater public key verification in Tauri configuration for secure auto-updates.",
+          "Automated release dispatch to Homebrew Tap repository.",
         ],
       },
     ],
