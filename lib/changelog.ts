@@ -11,12 +11,14 @@ export const CHANGELOG: ChangelogEntry[] = [
   {
     version: "2.0.1",
     date: "2026-09-29",
-    highlight: "NovaTerm v2.0.1 release with stability and performance updates.",
+    highlight: "Docker container auto-discovery on macOS and devcontainer PTY terminal resolution.",
     groups: [
       {
-        kind: "Changed",
+        kind: "Fixed",
         items: [
-          "Performance improvements, stability updates, and general maintenance.",
+          "Fixed Docker container discovery on macOS by properly resolving docker executable paths in GUI application environments.",
+          "Fixed devcontainer PTY terminal session spawn to use resolved docker binary path.",
+          "Added loading state indicator and manual refresh action to Docker Attach container dialog.",
         ],
       },
     ],
