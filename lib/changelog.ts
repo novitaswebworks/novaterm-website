@@ -11,12 +11,30 @@ export const CHANGELOG: ChangelogEntry[] = [
   {
     version: "2.0.0",
     date: "2026-09-29",
-    highlight: "NovaTerm v2.0.0 release with stability and performance updates.",
+    highlight: "Model Context Protocol (MCP) tool integration, Remote SSH & DevContainers, Port Forwarding drawer, and native vibrancy.",
     groups: [
+      {
+        kind: "Added",
+        items: [
+          "Model Context Protocol (MCP) client and server lifecycle management for extending AI agents with custom tools.",
+          "Remote development workspace integration supporting SSH hosts and Docker DevContainers with dynamic OSC 7/133 shell tracking.",
+          "Integrated Port Forwarding drawer with real-time tunnel status monitoring and auto-assigned local port mapping.",
+          "Redesigned Software Updates card in Settings with live version checking and direct copy-to-clipboard terminal upgrade commands.",
+        ],
+      },
       {
         kind: "Changed",
         items: [
-          "Performance improvements, stability updates, and general maintenance.",
+          "Upgraded Windows package delivery to native WinGet manifests with automated hash validation.",
+          "Refactored terminal shell initialization to automatically synchronize remote directory changes with the file explorer.",
+        ],
+      },
+      {
+        kind: "Fixed",
+        items: [
+          "Hardened remote command execution against shell argument injection vulnerabilities.",
+          "Resolved race condition in MCP session spawning on early child process exit.",
+          "Fixed Homebrew tap formula deprecations for clean automated updates.",
         ],
       },
     ],
