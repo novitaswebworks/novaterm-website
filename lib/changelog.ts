@@ -9,6 +9,19 @@ export interface ChangelogEntry {
 
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    version: "2.0.2",
+    date: "2026-09-29",
+    highlight: "Fixed Debian package compatibility on Kali Linux, Ubuntu 24.04+, and Debian 13 by adding 64-bit time_t (t64) package alternatives to deb dependencies.",
+    groups: [
+      {
+        kind: "Fixed",
+        items: [
+          "Fixed Debian package compatibility on Kali Linux, Ubuntu 24.04+, and Debian 13 by adding 64-bit time_t (t64) package alternatives to deb dependencies.",
+        ],
+      },
+    ],
+  },
+  {
     version: "2.0.1",
     date: "2026-09-29",
     highlight: "Docker container auto-discovery on macOS and devcontainer PTY terminal resolution.",
