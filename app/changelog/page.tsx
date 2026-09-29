@@ -11,8 +11,22 @@ import { cn } from "@/lib/utils"
 
 export const metadata: Metadata = {
   title: "Changelog",
-  description: `Every notable change to ${SITE.name}, oldest to newest.`,
+  description: `Release notes and version history for ${SITE.name}. Discover what is new in v${VERSION}.`,
   alternates: { canonical: `${SITE.url}/changelog` },
+  openGraph: {
+    type: "website",
+    title: `Changelog | ${SITE.name}`,
+    description: `Release notes and version history for ${SITE.name}. Discover what is new in v${VERSION}.`,
+    url: `${SITE.url}/changelog`,
+    siteName: SITE.name,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `Changelog | ${SITE.name}`,
+    description: `Release notes and version history for ${SITE.name}. Discover what is new in v${VERSION}.`,
+    site: SITE.twitter,
+    creator: SITE.twitter,
+  },
 }
 
 const kindStyles: Record<ChangeKind, string> = {

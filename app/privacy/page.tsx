@@ -5,9 +5,23 @@ import { PageHero, PageShell, Prose } from "@/components/site/page-shell"
 import { SITE } from "@/lib/site"
 
 export const metadata: Metadata = {
-  title: "Privacy",
-  description: `What ${SITE.name} collects (almost nothing) and what it sends, where, and when.`,
+  title: "Privacy Policy",
+  description: `Privacy commitments and data protection policies for ${SITE.name}. Zero telemetry, local storage, and private AI.`,
   alternates: { canonical: `${SITE.url}/privacy` },
+  openGraph: {
+    type: "website",
+    title: `Privacy Policy | ${SITE.name}`,
+    description: `Privacy commitments and data protection policies for ${SITE.name}. Zero telemetry, local storage, and private AI.`,
+    url: `${SITE.url}/privacy`,
+    siteName: SITE.name,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `Privacy Policy | ${SITE.name}`,
+    description: `Privacy commitments and data protection policies for ${SITE.name}. Zero telemetry, local storage, and private AI.`,
+    site: SITE.twitter,
+    creator: SITE.twitter,
+  },
 }
 
 const updated = "May 2026"

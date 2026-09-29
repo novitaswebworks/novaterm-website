@@ -9,8 +9,22 @@ import { SITE, VERSION } from "@/lib/site"
 
 export const metadata: Metadata = {
   title: "About",
-  description: `What ${SITE.name} is, who builds it, and how it's put together.`,
+  description: `What ${SITE.name} is, who builds it, and how it is engineered with Rust, Tauri, and React.`,
   alternates: { canonical: `${SITE.url}/about` },
+  openGraph: {
+    type: "website",
+    title: `About | ${SITE.name}`,
+    description: `What ${SITE.name} is, who builds it, and how it is engineered with Rust, Tauri, and React.`,
+    url: `${SITE.url}/about`,
+    siteName: SITE.name,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `About | ${SITE.name}`,
+    description: `What ${SITE.name} is, who builds it, and how it is engineered with Rust, Tauri, and React.`,
+    site: SITE.twitter,
+    creator: SITE.twitter,
+  },
 }
 
 const stack = [

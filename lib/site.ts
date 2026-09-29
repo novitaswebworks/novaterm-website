@@ -15,6 +15,7 @@ export const SITE = {
   demoVideoId: "novatermdemo",
   demoVideoUrl: "https://youtu.be/novatermdemo",
   youtube: "https://www.youtube.com/@novitaswebworks",
+  twitter: "@novitaswebworks",
 } as const
 
 const releaseBase = `${SITE.githubReleases}/download/v${VERSION}`

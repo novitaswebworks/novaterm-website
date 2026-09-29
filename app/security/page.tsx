@@ -9,8 +9,22 @@ import { SITE, VERSION } from "@/lib/site"
 
 export const metadata: Metadata = {
   title: "Security",
-  description: `How to report security issues in ${SITE.name}, what's in scope, and what we do to keep things safe.`,
+  description: `Security architecture, vulnerability reporting, and privacy standards for ${SITE.name}.`,
   alternates: { canonical: `${SITE.url}/security` },
+  openGraph: {
+    type: "website",
+    title: `Security | ${SITE.name}`,
+    description: `Security architecture, vulnerability reporting, and privacy standards for ${SITE.name}.`,
+    url: `${SITE.url}/security`,
+    siteName: SITE.name,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `Security | ${SITE.name}`,
+    description: `Security architecture, vulnerability reporting, and privacy standards for ${SITE.name}.`,
+    site: SITE.twitter,
+    creator: SITE.twitter,
+  },
 }
 
 export default function SecurityPage() {

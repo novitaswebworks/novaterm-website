@@ -19,43 +19,79 @@ const fontMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
   title: {
-    default: `${SITE.name} - ${SITE.tagline}`,
-    template: `%s - ${SITE.name}`,
+    default: `${SITE.name} | The AI-Native Terminal & Developer Workspace`,
+    template: `%s | ${SITE.name}`,
   },
-  description: SITE.description,
+  description:
+    "NovaTerm is a GPU-accelerated terminal and developer workspace with an integrated code editor, Model Context Protocol (MCP) agent tools, and offline local AI via Ollama. Built with Rust and Tauri for under 10MB footprint and 300ms launch.",
   applicationName: SITE.name,
   keywords: [
     "AI terminal",
-    "AI IDE",
+    "GPU terminal",
+    "developer workspace",
     "AI code editor",
-    "agentic coding",
-    "React terminal",
-    "xterm.js",
+    "Model Context Protocol",
+    "MCP terminal",
+    "Ollama terminal",
+    "local AI terminal",
+    "offline LLM coding",
     "Tauri terminal",
-    "Terminal Emulator",
-    "BYOK",
-    "developer tools",
+    "Rust terminal emulator",
+    "DevContainer terminal",
+    "SSH remote workspace",
+    "ghost text autocomplete",
+    "Warp alternative",
+    "iTerm2 alternative",
+    "Ghostty alternative",
+    "Alacritty alternative",
+    "Hyper alternative",
     "open source terminal",
+    "BYOK AI terminal",
   ],
-  authors: [{ name: "NovaTerm", url: SITE.github }],
-  creator: "NovaTerm",
-  publisher: "NovaTerm",
-  alternates: { canonical: SITE.url },
+  authors: [{ name: "Novitas Web Works", url: SITE.github }],
+  creator: "Novitas Web Works",
+  publisher: "Novitas Web Works",
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     type: "website",
     url: SITE.url,
-    title: `${SITE.name} - ${SITE.tagline}`,
-    description: SITE.description,
+    title: `${SITE.name} | The AI-Native Terminal & Developer Workspace`,
+    description:
+      "NovaTerm is a GPU-accelerated terminal and developer workspace with an integrated code editor, Model Context Protocol (MCP) agent tools, and offline local AI via Ollama.",
     siteName: SITE.name,
     locale: "en_US",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        type: "image/png",
+        alt: "NovaTerm - The AI-Native Terminal & Developer Workspace",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: `${SITE.name} - ${SITE.tagline}`,
-    description: SITE.description,
+    title: `${SITE.name} | The AI-Native Terminal & Developer Workspace`,
+    description:
+      "NovaTerm is a GPU-accelerated terminal and developer workspace with an integrated code editor, Model Context Protocol (MCP) agent tools, and offline local AI via Ollama.",
+    site: SITE.twitter,
+    creator: SITE.twitter,
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        type: "image/png",
+        alt: "NovaTerm - The AI-Native Terminal & Developer Workspace",
+      },
+    ],
   },
   icons: {
     icon: [
+      { url: "/favicon.ico", sizes: "any" },
       { url: "/novaterm_icon_256.png", sizes: "256x256", type: "image/png" },
       { url: "/novaterm-icon.png", sizes: "1024x1024", type: "image/png" },
     ],
@@ -63,16 +99,53 @@ export const metadata: Metadata = {
     shortcut: ["/novaterm_icon_256.png"],
   },
   category: "technology",
-  robots: { index: true, follow: true },
+  classification: "Developer Tools / Terminal Emulator",
+  manifest: "/site.webmanifest",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
 }
 
 export const viewport: Viewport = {
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-    { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" },
+    { media: "(prefers-color-scheme: dark)", color: "#080c14" },
   ],
   width: "device-width",
   initialScale: 1,
+}
+
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Novitas Web Works",
+  url: SITE.url,
+  logo: `${SITE.url}/novaterm-icon.png`,
+  sameAs: [
+    SITE.github,
+    SITE.youtube,
+  ],
+}
+
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: SITE.name,
+  url: SITE.url,
+  description: SITE.description,
+  potentialAction: {
+    "@type": "SearchAction",
+    target: `${SITE.url}/api/search?q={search_term_string}`,
+    "query-input": "required name=search_term_string",
+  },
 }
 
 export default function RootLayout({
@@ -91,6 +164,16 @@ export default function RootLayout({
         fontSans.variable
       )}
     >
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+        />
+      </head>
       <body>
         <ThemeProvider defaultTheme="dark">
           <BackgroundWaves />

@@ -1,4 +1,5 @@
 import { source } from "@/lib/source"
+import { SITE } from "@/lib/site"
 import { DocsBody, DocsPage } from "fumadocs-ui/page"
 import { notFound } from "next/navigation"
 import type { Metadata } from "next"
@@ -25,9 +26,10 @@ export default async function Page(props: {
   const slugPath = slugs.join("/")
   const gitUrl = `https://github.com/novitaswebworks/novaterm-website/blob/main/content/docs/${page.path}`
   const rawMarkdownUrl = `/docs/${slugPath ? slugPath + ".md" : "index.md"}`
-  const sciraUrl = `https://scira.app/?q=https://novaterm.app/docs/${slugPath ? slugPath + ".md" : "index.md"}`
-  const chatgptUrl = `https://chatgpt.com/?q=Read+this+page:+https://novaterm.app/docs/${slugPath ? slugPath + ".md" : "index.md"}`
-  const claudeUrl = `https://claude.ai/new?q=https://novaterm.app/docs/${slugPath ? slugPath + ".md" : "index.md"}`
+  const docPublicUrl = `${SITE.url}/docs/${slugPath ? slugPath + ".md" : "index.md"}`
+  const sciraUrl = `https://scira.app/?q=${encodeURIComponent(docPublicUrl)}`
+  const chatgptUrl = `https://chatgpt.com/?q=${encodeURIComponent("Read this page: " + docPublicUrl)}`
+  const claudeUrl = `https://claude.ai/new?q=${encodeURIComponent(docPublicUrl)}`
   const cursorUrl = "https://cursor.com"
 
   return (
@@ -65,12 +67,20 @@ export async function generateMetadata(props: {
 
   if (!page) notFound()
 
-  const ogUrl = `/og/docs/${params.slug?.join("/") ?? ""}`
+  const pagePath = params.slug?.join("/") ?? ""
+  const pageUrl = `${SITE.url}/docs${pagePath ? "/" + pagePath : ""}`
+  const ogUrl = `/og/docs/${pagePath}`
 
   return {
     title: page.data.title,
     description: page.data.description,
+    alternates: { canonical: pageUrl },
     openGraph: {
+      type: "article",
+      title: `${page.data.title} | ${SITE.name} Docs`,
+      description: page.data.description,
+      url: pageUrl,
+      siteName: SITE.name,
       images: [
         {
           url: ogUrl,
@@ -82,6 +92,10 @@ export async function generateMetadata(props: {
     },
     twitter: {
       card: "summary_large_image",
+      title: `${page.data.title} | ${SITE.name} Docs`,
+      description: page.data.description,
+      site: SITE.twitter,
+      creator: SITE.twitter,
       images: [ogUrl],
     },
   }

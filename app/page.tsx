@@ -17,10 +17,33 @@ export default function HomePage() {
     name: SITE.name,
     description: SITE.description,
     applicationCategory: "DeveloperApplication",
-    operatingSystem: "macOS, Linux, Windows",
+    applicationSubCategory: "Terminal Emulator",
+    operatingSystem: "macOS 13+, Linux (glibc 2.31+), Windows 10/11",
     softwareVersion: VERSION,
     downloadUrl: DOWNLOADS.macSilicon.url,
     url: SITE.url,
+    screenshot: `${SITE.url}/terminal.webp`,
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: "USD",
+    },
+    author: {
+      "@type": "Organization",
+      name: "Novitas Web Works",
+      url: SITE.url,
+    },
+    featureList: [
+      "GPU-Accelerated WebGL Terminal",
+      "Built-in CodeMirror Code Editor",
+      "Model Context Protocol (MCP) Client",
+      "Local AI inference with Ollama",
+      "Predictive Ghost Text Autocomplete",
+      "SSH Remote Workspaces",
+      "Docker DevContainers",
+      "Built-in Port Forwarding Manager",
+      "Zero Telemetry Privacy Guarantee",
+    ],
   }
 
   return (

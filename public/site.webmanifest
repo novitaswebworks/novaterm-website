@@ -1,0 +1,21 @@
+{
+  "name": "NovaTerm",
+  "short_name": "NovaTerm",
+  "description": "The AI-native terminal and developer workspace.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#090d16",
+  "theme_color": "#090d16",
+  "icons": [
+    {
+      "src": "/novaterm_icon_256.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    },
+    {
+      "src": "/novaterm-icon.png",
+      "sizes": "1024x1024",
+      "type": "image/png"
+    }
+  ]
+}

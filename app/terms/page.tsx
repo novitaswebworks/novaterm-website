@@ -5,9 +5,23 @@ import { PageHero, PageShell, Prose } from "@/components/site/page-shell"
 import { SITE } from "@/lib/site"
 
 export const metadata: Metadata = {
-  title: "Terms",
-  description: `The terms that apply when you download and use ${SITE.name}.`,
+  title: "Terms of Use",
+  description: `Terms and conditions governing the download, installation, and use of ${SITE.name}.`,
   alternates: { canonical: `${SITE.url}/terms` },
+  openGraph: {
+    type: "website",
+    title: `Terms of Use | ${SITE.name}`,
+    description: `Terms and conditions governing the download, installation, and use of ${SITE.name}.`,
+    url: `${SITE.url}/terms`,
+    siteName: SITE.name,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `Terms of Use | ${SITE.name}`,
+    description: `Terms and conditions governing the download, installation, and use of ${SITE.name}.`,
+    site: SITE.twitter,
+    creator: SITE.twitter,
+  },
 }
 
 const updated = "May 2026"
