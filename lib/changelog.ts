@@ -9,6 +9,19 @@ export interface ChangelogEntry {
 
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    version: "2.0.1",
+    date: "2026-09-29",
+    highlight: "NovaTerm v2.0.1 release with stability and performance updates.",
+    groups: [
+      {
+        kind: "Changed",
+        items: [
+          "Performance improvements, stability updates, and general maintenance.",
+        ],
+      },
+    ],
+  },
+  {
     version: "2.0.0",
     date: "2026-09-29",
     highlight: "Model Context Protocol (MCP) tool integration, Remote SSH & DevContainers, Port Forwarding drawer, and native vibrancy.",
