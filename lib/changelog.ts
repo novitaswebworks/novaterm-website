@@ -9,6 +9,19 @@ export interface ChangelogEntry {
 
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    version: "2.0.0",
+    date: "2026-09-29",
+    highlight: "NovaTerm v2.0.0 release with stability and performance updates.",
+    groups: [
+      {
+        kind: "Changed",
+        items: [
+          "Performance improvements, stability updates, and general maintenance.",
+        ],
+      },
+    ],
+  },
+  {
     version: "1.4.0",
     date: "2026-08-29",
     highlight: "Windows Package Manager (Winget) integration, Chocolatey packaging, and release pipeline hardening.",
