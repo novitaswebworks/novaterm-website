@@ -9,6 +9,20 @@ export interface ChangelogEntry {
 
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    version: "2.3.0",
+    date: "2026-11-03",
+    highlight: "NovaTerm now restarts into the new version after it is updated by Homebrew, winget, a package upgrade or an AppImage swap. If no terminal is running a command it restarts on its own after a short notice; otherwise it asks first and never stops a running command without a click.",
+    groups: [
+      {
+        kind: "Added",
+        items: [
+          "NovaTerm now restarts into the new version after it is updated by Homebrew, winget, a package upgrade or an AppImage swap. If no terminal is running a command it restarts on its own after a short notice; otherwise it asks first and never stops a running command without a click.",
+          "Update and restart in the update dialog now downloads, verifies and installs the update inside the app, with a progress bar, and restarts when it is done. If the install fails you can try again or open the release notes.",
+        ],
+      },
+    ],
+  },
+  {
     version: "2.2.1",
     date: "2026-11-03",
     highlight: "Switching theme or light/dark mode now updates open terminals immediately. Previously the terminal kept the old colors until something else changed.",
