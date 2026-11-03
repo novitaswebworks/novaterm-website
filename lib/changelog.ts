@@ -9,6 +9,28 @@ export interface ChangelogEntry {
 
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    version: "2.1.0",
+    date: "2026-11-03",
+    highlight: "Claude Fable 5.1, Claude Opus 5.5, Claude Sonnet 5.5 and Claude Haiku 5.5 are now available in the AI model picker.",
+    groups: [
+      {
+        kind: "Added",
+        items: [
+          "Claude Fable 5.1, Claude Opus 5.5, Claude Sonnet 5.5 and Claude Haiku 5.5 are now available in the AI model picker.",
+        ],
+      },
+      {
+        kind: "Changed",
+        items: [
+          "Updated AI SDK to v7 and all AI provider packages to their latest major versions.",
+          "Updated Tauri plugins and the Rust dependency tree to their latest compatible releases.",
+          "Updated build and test tooling, including TypeScript 7, Vitest 5 and Babel 8.",
+          "Resolved all fixable npm dependency advisories, including critical issues in  and , and high-severity issues in ,  and .",
+        ],
+      },
+    ],
+  },
+  {
     version: "2.0.2",
     date: "2026-09-29",
     highlight: "Fixed Debian package compatibility on Kali Linux, Ubuntu 24.04+, and Debian 13 by adding 64-bit time_t (t64) package alternatives to deb dependencies.",
