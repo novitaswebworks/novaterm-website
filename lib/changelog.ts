@@ -9,6 +9,20 @@ export interface ChangelogEntry {
 
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    version: "2.2.1",
+    date: "2026-11-03",
+    highlight: "Switching theme or light/dark mode now updates open terminals immediately. Previously the terminal kept the old colors until something else changed.",
+    groups: [
+      {
+        kind: "Fixed",
+        items: [
+          "Switching theme or light/dark mode now updates open terminals immediately. Previously the terminal kept the old colors until something else changed.",
+          "The first-run hints in an empty terminal follow the terminal palette, so they stay readable when the interface and terminal use different light and dark colors.",
+        ],
+      },
+    ],
+  },
+  {
     version: "2.2.0",
     date: "2026-11-03",
     highlight: "MCP servers now start with an empty environment plus a small allowlist of toolchain variables (such as ). A server that relied on a variable from your shell profile or the app environment must have it set in its own configuration.",
