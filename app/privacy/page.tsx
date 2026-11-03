@@ -112,7 +112,6 @@ export default function PrivacyPage() {
           </li>
           <li>
             <strong>Email</strong>, if you write to{" "}
-            <Link href="mailto:hello@novitasweb.works">hello@novitasweb.works</Link> or{" "}
             <Link href="mailto:hello@novitasweb.works">hello@novitasweb.works</Link>.
           </li>
         </ul>

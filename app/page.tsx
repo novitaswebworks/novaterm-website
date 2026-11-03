@@ -20,7 +20,7 @@ export default function HomePage() {
     applicationSubCategory: "Terminal Emulator",
     operatingSystem: "macOS 13+, Linux (glibc 2.31+), Windows 10/11",
     softwareVersion: VERSION,
-    downloadUrl: DOWNLOADS.macSilicon.url,
+    downloadUrl: DOWNLOADS.mac.url,
     url: SITE.url,
     screenshot: `${SITE.url}/terminal.webp`,
     offers: {

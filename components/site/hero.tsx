@@ -25,7 +25,7 @@ export function Hero() {
       ? { label: "Download for Linux", href: DOWNLOADS.linuxAppImage.url, icon: ComputerIcon }
       : platform === "windows"
         ? { label: "Download for Windows", href: DOWNLOADS.windows.url, icon: MicrosoftIcon }
-        : { label: "Download for macOS", href: DOWNLOADS.macSilicon.url, icon: AppleIcon }
+        : { label: "Download for macOS", href: DOWNLOADS.mac.url, icon: AppleIcon }
 
   return (
     <section ref={ref} className="relative isolate pt-32 pb-20 sm:pt-40 sm:pb-32 overflow-hidden">

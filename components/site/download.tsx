@@ -40,15 +40,9 @@ const platforms: PlatformBlock[] = [
     name: "macOS",
     builds: [
       {
-        arch: "Apple Silicon · M1+",
-        file: DOWNLOADS.macSilicon.file,
-        url: DOWNLOADS.macSilicon.url,
-        available: true,
-      },
-      {
-        arch: "Intel · x86_64",
-        file: DOWNLOADS.macIntel.file,
-        url: DOWNLOADS.macIntel.url,
+        arch: "Universal · Apple Silicon & Intel",
+        file: DOWNLOADS.mac.file,
+        url: DOWNLOADS.mac.url,
         available: true,
       },
     ],
@@ -112,8 +106,8 @@ export function Download() {
       }
     return {
       label: "Download for macOS",
-      url: DOWNLOADS.macSilicon.url,
-      sub: "Apple Silicon - Intel build below",
+      url: DOWNLOADS.mac.url,
+      sub: "Universal · Apple Silicon & Intel",
     }
   })()
 

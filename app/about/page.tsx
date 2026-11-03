@@ -68,7 +68,7 @@ export default function AboutPage() {
         <h2>Who builds it</h2>
         <p>
           Mostly me -{" "}
-          <Link href={SITE.youtube} target="_blank" rel="noreferrer">
+          <Link href={SITE.githubOrg} target="_blank" rel="noreferrer">
             novitaswebworks
           </Link>
           . NovaTerm started as a side project because I wanted a faster terminal

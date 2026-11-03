@@ -8,27 +8,23 @@ export const SITE = {
   description:
     "NovaTerm is a beautifully crafted, GPU-accelerated terminal with a built-in code editor, local AI models via Ollama, and predictive ghost text.",
   github: "https://github.com/novitaswebworks/novaterm",
+  company: "Novitas WebWorks",
+  companyUrl: "https://novitasweb.works",
+  githubOrg: "https://github.com/novitaswebworks",
   githubReleases: "https://github.com/novitaswebworks/novaterm/releases",
   issues: "https://github.com/novitaswebworks/novaterm/issues",
   websiteRepo: "https://github.com/novitaswebworks/novaterm-website",
 
   demoVideoId: "novatermdemo",
   demoVideoUrl: "https://youtu.be/novatermdemo",
-  youtube: "https://www.youtube.com/@novitaswebworks",
-  twitter: "@novitaswebworks",
+  twitter: "@kimetsu119",
+  twitterUrl: "https://x.com/kimetsu119",
 } as const
 
 const releaseBase = `${SITE.githubReleases}/download/v${VERSION}`
 
 export const DOWNLOADS = {
-  macSilicon: {
-    label: "macOS (Universal)",
-    file: `NovaTerm_${VERSION}_universal.dmg`,
-    arch: "Apple Silicon & Intel",
-    url: `${releaseBase}/NovaTerm_${VERSION}_universal.dmg`,
-    available: true,
-  },
-  macIntel: {
+  mac: {
     label: "macOS (Universal)",
     file: `NovaTerm_${VERSION}_universal.dmg`,
     arch: "Apple Silicon & Intel",

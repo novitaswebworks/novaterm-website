@@ -130,8 +130,8 @@ const organizationJsonLd = {
   url: SITE.url,
   logo: `${SITE.url}/novaterm-icon.png`,
   sameAs: [
-    SITE.github,
-    SITE.youtube,
+    SITE.githubOrg,
+    SITE.twitterUrl,
   ],
 }
 
