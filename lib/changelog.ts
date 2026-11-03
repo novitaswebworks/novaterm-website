@@ -9,6 +9,27 @@ export interface ChangelogEntry {
 
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    version: "2.2.0",
+    date: "2026-11-03",
+    highlight: "MCP servers now start with an empty environment plus a small allowlist of toolchain variables (such as ). A server that relied on a variable from your shell profile or the app environment must have it set in its own configuration.",
+    groups: [
+      {
+        kind: "Changed",
+        items: [
+          "MCP servers now start with an empty environment plus a small allowlist of toolchain variables (such as ). A server that relied on a variable from your shell profile or the app environment must have it set in its own configuration.",
+        ],
+      },
+      {
+        kind: "Fixed",
+        items: [
+          "Adding or editing an MCP server now validates its environment and arguments: numeric environment values are accepted, malformed JSON, arrays and unclosed quotes are rejected, duplicate identifiers are refused, and arguments containing spaces are preserved.",
+          "Shell autocomplete now works with named OpenAI-compatible endpoints, and deleting the endpoint selected for autocomplete resets the selection.",
+          "Credentials held by the app process or the login shell are no longer passed to MCP servers.",
+        ],
+      },
+    ],
+  },
+  {
     version: "2.1.0",
     date: "2026-11-03",
     highlight: "Claude Fable 5.1, Claude Opus 5.5, Claude Sonnet 5.5 and Claude Haiku 5.5 are now available in the AI model picker.",
